@@ -17,3 +17,23 @@ class Address(models.Model):
 
     def __str__(self): 
         return f'CUSTOMER: {self.customer.firstname} {self.customer.lastname}, ADDRESS: {self.street} {self.city}'
+
+class Food(models.model):
+    name = models.CharField(max_length=30)
+    description = models.CharField(max_length=100)
+    price = models.DecimalField(decimal_places=2)
+
+    def __str__(self):
+        return(f"Food Name: {self.name}\nDescription: {self.description}\nPrice: {self.price}")
+    
+class Order(models.model):
+    choices = [('Cash','Cash'),('Card','Card'),('Digital Wallet','Digital Wallet')]
+    orderdatetime = models.DateTimeField(auto_now_add=True)
+    paymentmode = models.CharField(choices=choices)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+
+class OrderItem(models.model):
+    quantity = models.IntegerField(default=0)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    food = models.ForeignKey(Food, on_delete=models.CASCADE)
+
