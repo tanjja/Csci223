@@ -1,0 +1,26 @@
+{% extends 'webkiosk/base_template.html' %}
+
+{% block pagetitle %} Customer Form {% endblock %}
+
+{% block content %}
+<h2> {{actionname}} Order </h2>
+
+<form method="post">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        {{ form.customer }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.paymentmode }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">{{ actionname }} Order </button>
+
+    <!--{{ form.as_ul }}
+    input type="submit" value="Submit">
+-->
+</form>
+
+{% endblock %}

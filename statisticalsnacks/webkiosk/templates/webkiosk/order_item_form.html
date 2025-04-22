@@ -1,0 +1,24 @@
+{% extends 'webkiosk/base_template.html' %}
+
+{% block content %}
+<h2>Add Item to Order #{{ order.id }}</h2>
+
+<form method="post">
+  {% csrf_token %}
+  <div class="mb-3">
+    {{ form.food }}
+  </div>
+
+  <div class="mb-3">
+    {{ form.quantity }}
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Subtotal</label>
+    <input type="text" class="form-control" id="subtotal" disabled>
+  </div>
+
+  <button type="submit" class="btn btn-success">Add Item</button>
+  <a href="{% url 'webkiosk:order-detail' order.id %}" class="btn btn-secondary ms-2">Back to Order</a>
+</form>
+{% endblock %}

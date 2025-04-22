@@ -1,0 +1,17 @@
+{% extends 'webkiosk/base_template.html' %}
+
+{% block pagetitle %} {{ food.name }} {% endblock %}
+
+{% block content %}
+<h2 class="mb-3"> Food Details</h2>
+<ul class="list-group list-group-flush ps-3">
+    <li class="list-group-item"><strong>Food Name:</strong> {{ food.name }}</li>
+    <li class="list-group-item"><strong>Description:</strong> {{food.description}}</li>
+    <li class="list-group-item"><strong>Price:</strong> {{food.price}}</li>
+</ul>
+
+<div class="d-flex gap-2">
+    <p><a href="{% url 'webkiosk:food-list' %}" class="btn btn-secondary mt-4">← Back to Food List</a></p>
+</div>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'webkiosk/base_template.html' %}
+
+{% block content %}
+
+{% block pagetitle %}  {% endblock %}
+
+<h1> Food </h1>
+
+<table class="table table-hover table-bordered align-middle">
+    <thead class="table-light">
+      <tr>
+        <th>Food Name</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for food in foodlist %}
+      <tr>
+        <td>{{ food.name }}</td>
+        <td>{{ food.price }}</td>
+        <td>
+          <a href="{% url 'webkiosk:food-detail' food.id %}" class="btn btn-sm btn-info">More Info</a>
+          <a href="{% url 'webkiosk:food-update' food.id %}" class="btn btn-sm btn-warning">Edit</a>
+          <a href="{% url 'webkiosk:food-delete' food.id %}" class="btn btn-sm btn-danger">Delete</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="3" class="text-center">There are currently 0 types of food.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

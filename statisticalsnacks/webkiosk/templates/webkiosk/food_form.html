@@ -1,0 +1,33 @@
+{% extends 'webkiosk/base_template.html' %}
+
+{% block pagetitle %} Food Form {% endblock %}
+
+{% block content %}
+<h2> {{actionname}} Food</h2>
+
+<form method="post">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        <label for="id_name" class="form-label">Food name</label>
+        {{ form.name }}
+    </div>
+
+    <div class="mb-3">
+        <label for="id_price" class="form-label">Price</label>
+        {{ form.price }}
+    </div>
+
+    <div class="mb-3">
+        <label for="id_description" class="form-label">Description</label>
+        {{ form.description }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">{{ actionname }} Food </button>
+
+    <!--{{ form.as_ul }}
+    input type="submit" value="Submit">
+-->
+</form>
+
+{% endblock %}

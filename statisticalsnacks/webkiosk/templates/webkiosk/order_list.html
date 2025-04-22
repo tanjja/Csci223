@@ -1,0 +1,36 @@
+{% extends 'webkiosk/base_template.html' %}
+
+{% block content %}
+<h2 class="mb-3">All Orders</h2>
+
+{% if orders %}
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Order ID</th>
+      <th>Customer Name</th>
+      <th>Date Ordered</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for order in orders %}
+    <tr>
+      <td>{{ order.id }}</td>
+      <td>{{ order.customer }}</td>
+      <td>{{ order.date_ordered }}</td>
+      <td>
+        <a href="{% url 'webkiosk:order-detail' order.id %}" class="btn btn-sm btn-outline-secondary">View</a>
+        <a href="{% url 'webkiosk:order-update' order.id %}" class="btn btn-sm btn-outline-primary">Edit</a>
+        <a href="{% url 'webkiosk:order-delete' order.id %}" class="btn btn-sm btn-outline-danger">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+  <p class="text-muted">No orders have been created yet.</p>
+{% endif %}
+
+<a href="{% url 'webkiosk:order-add' %}" class="btn btn-success mt-3">Add New Order</a>
+{% endblock %}
