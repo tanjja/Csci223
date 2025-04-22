@@ -1,0 +1,29 @@
+{% extends 'webkiosk/base_template.html' %}
+
+{% block pagetitle %}{{ customer.firstname }} {{customer.lastname}} {% endblock %}
+
+{% block content %}
+<h2> Customer Details</h2>
+<ul>
+    <li>Name: {{ customer.firstname }} {{customer.lastname }}</li>
+    <li>Date Joined: {{customer.date_joined}}</li>
+</ul>
+
+{% if customer.address_set.all %}
+
+<h3> Addresses</h3>
+
+<ul> 
+    {% for address in customer.address_set.all %}
+    <li> {{ address.street }} {{ address.city}} </li>
+
+    {% endfor %}
+</ul>
+
+{% else %}
+
+<p>No addresses found for this customer</p>
+
+{% endif %}
+
+{% endblock %}

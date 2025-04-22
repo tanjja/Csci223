@@ -1,0 +1,27 @@
+<!doctype html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Statistical Snacks - Webkiosk</title>
+    </head>
+
+    <body>
+
+        <header> 
+            <h1>StatisticalSnacks Webkiosk</h1>
+            <p>We know what you want to eat...</p>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="{% url 'webkiosk:customer-list' %}"> Customers </a></li>
+                <li><a href="{% url 'webkiosk:customer-add' %}"> Add Customers </a></li>
+            </ul>
+        </nav>
+
+        {% block content %}
+
+        {% endblock %}
+    </body>
+</html>

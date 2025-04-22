@@ -1,0 +1,14 @@
+{% extends 'webkiosk/base_template.html' %}
+
+{% block content %}
+
+{% block pagetitle %}  {% endblock %}
+
+<h1> Customers</h1>
+<ul>
+    {% for customer in customerlist %}
+    <li> #{{ customer.id }} - {{ customer.firstname }} {{customer.lastname }} | <a href="{% url 'webkiosk:customer-detail' customer.id %}"> More Info</a> | <a href="{% url 'webkiosk:customer-update' customer.id %}">Edit</a> | <a href="{% url 'webkiosk:customer-delete' customer.id %}">Delete</a></li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
