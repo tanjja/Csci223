@@ -3,19 +3,19 @@
 {% block pagetitle %}{{ customer.firstname }} {{customer.lastname}} {% endblock %}
 
 {% block content %}
-<h2> Customer Details</h2>
-<ul>
-    <li>Name: {{ customer.firstname }} {{customer.lastname }}</li>
-    <li>Date Joined: {{customer.date_joined}}</li>
+<h2 class="mb-3"> Customer Details</h2>
+<ul class="list-group list-group-flush ps-3">
+    <li class="list-group-item"><strong>Name:</strong> {{ customer.firstname }} {{customer.lastname }}</li>
+    <li class="list-group-item"><strong>Date Joined:</strong> {{customer.date_joined}}</li>
 </ul>
 
 {% if customer.address_set.all %}
 
 <h3> Addresses</h3>
 
-<ul> 
+<ul class="list-group list-group-flush ps-3"> 
     {% for address in customer.address_set.all %}
-    <li> {{ address.street }} {{ address.city}} </li>
+    <li class="list-group-item"> {{ address.street }} {{ address.city}} </li>
 
     {% endfor %}
 </ul>
@@ -25,5 +25,10 @@
 <p>No addresses found for this customer</p>
 
 {% endif %}
+
+<div class="d-flex gap-2">
+    <p><a href="{% url 'webkiosk:customer-list' %}" class="btn btn-secondary mt-4">← Back to Customer List</a></p>
+    <p><a href="{% url 'webkiosk:address-add' customer.id %}" class="btn btn-outline-secondary mt-4"> Add Address </a></p>
+</div>
 
 {% endblock %}

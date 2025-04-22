@@ -7,8 +7,22 @@
 
 <form method="post">
     {% csrf_token %}
-    {{ form.as_ul }}
-    <input type="submit" value="Submit">
+
+    <div class="mb-3">
+        <label for="id_firstname" class="form-label">First name</label>
+        {{ form.firstname }}
+    </div>
+
+    <div class="mb-3">
+        <label for="id_lastname" class="form-label">Last name</label>
+        {{ form.lastname }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">{{ actionname }} Customer</button>
+
+    <!--{{ form.as_ul }}
+    input type="submit" value="Submit">
+-->
 </form>
 
 <ul>

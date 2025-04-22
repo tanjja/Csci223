@@ -39,6 +39,7 @@ def updatecustomer(request, pk):
         if form.is_valid():
             form.save()
             messages.success(request, 'Customer record updated successfully.') 
+            return redirect('webkiosk:customer-list')
 
     context = {'form': form, 'actionname': 'Edit'}
     return render(request, 'webkiosk/customer_form.html', context)
@@ -61,6 +62,10 @@ def addaddress(request, customer_id):
         form = AddressForm(request.POST)
         if form.is_valid():
             form.save()
+            print("test")
+            return redirect('webkiosk:customer-detail',pk=customer_id)
+        else:
+            print(form.errors)
 
     context = { 'form': form }
     return render(request, 'webkiosk/address_form.html', context)

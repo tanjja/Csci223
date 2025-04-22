@@ -6,11 +6,15 @@
 
 <h2>Delete Customer</h2>
 
+<div class="alert alert-warning">
+    Are you sure you want to delete <strong>Customer #{{ customer.id }} {{ customer.firstname }} {{ customer.last }}</strong>?
+</div>
+
+
 <form method="post">
     {% csrf_token %}
-    <p> Are you sure you want to delete <b>Customer # {{customer.id}} {{ customer.firstname}} {{customer.last}} </b>?</p>
-    <a href="{% url 'webkiosk:customer-list' %}">Cancel</a>
-    <input type="submit" value="Yes">
+    <a href="{% url 'webkiosk:customer-list' %}" class="btn btn-outline-secondary">Cancel</a>
+    <input type="submit" value="Yes" class="btn btn-danger">
 </form>
 
 {% endblock %}

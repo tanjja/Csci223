@@ -1,18 +1,30 @@
 {% extends 'webkiosk/base_template.html' %}
 
+{% block pagetitle %} Address Form {% endblock %}
+
 {% block content %}
 
-{% block pagetitle %} Address Form {% endblock %}
+
 <h2> Add Address</h2>
 
 
 <form method="post">
     {% csrf_token %}
-    Street: {{ form.street }}
-    <p></p>
-    City: {{ form.city }}
-    <p></p>
-    <input type="submit" value="Submit">
+    
+
+    <div class="mb-3">
+        <label for="id_street" class="form-label">Street</label>
+        {{ form.street }}
+    </div>
+
+    <div class="mb-3">
+        <label for="id_city" class="form-label">City</label>
+        {{ form.city }}
+    </div>
+
+    {{ form.customer }}
+
+    <button type="submit" class="btn btn-primary">Add</button>
 </form>
 
 
