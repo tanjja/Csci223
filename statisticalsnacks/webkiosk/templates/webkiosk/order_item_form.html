@@ -13,11 +13,6 @@
     {{ form.quantity }}
   </div>
 
-  <div class="mb-3">
-    <label class="form-label">Subtotal</label>
-    <input type="text" class="form-control" id="subtotal" disabled>
-  </div>
-
   <button type="submit" class="btn btn-success">Add Item</button>
   <a href="{% url 'webkiosk:order-detail' order.id %}" class="btn btn-secondary ms-2">Back to Order</a>
 </form>
